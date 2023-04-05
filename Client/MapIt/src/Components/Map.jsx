@@ -4,6 +4,7 @@ import Map, {Marker} from 'react-map-gl';
 import RoomIcon from '@mui/icons-material/Room';
 import Popups from './Popup';
 import '../../src/Map.css'
+import FetchPins from './FetchPins';
 
 function MapDisplay(){
   const [showPopup, setShowPopup] = useState(true);
@@ -18,12 +19,7 @@ function MapDisplay(){
           mapboxAccessToken='pk.eyJ1IjoiYXNocmFmLWFyYWoiLCJhIjoiY2xnM2NuNzFrMDNpeTNkbTJvZXY2c3pqeiJ9.C7iovVKPmBIj4IKUlJ_S_g'
           mapStyle="mapbox://styles/mapbox/streets-v9"
         >
-              <Marker longitude={2.294694} latitude={48.858093} layer="top" style={{position:'absolute', top:0, left:0}} >
-                <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px'}} />
-             </Marker>
-            {/* {showPopup && (
-              <Popups longitude={2.294694} latitude={48.858093} setShowPopup={setShowPopup}></Popups>
-            )} */}
+            <FetchPins></FetchPins> 
         </Map> 
       );
 }
