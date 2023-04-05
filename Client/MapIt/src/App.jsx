@@ -3,10 +3,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Map from './Components/Map'
 import MapDisplay from './Components/Map'
+import '../src/Map.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <div className="App">
       <MapDisplay/>
