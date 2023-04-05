@@ -5,8 +5,9 @@ import { Marker } from 'react-map-gl';
 import Popups from './Popup';
 import '../../src/Map.css'
 
-function FetchPins(){
+function FetchPins(props){
     const [pins, setPins] = useState([])
+    const [showPopup, setShowPopup] = useState(true);
     useEffect(()=>{
         const getPins = async() => {
             try {
@@ -23,15 +24,16 @@ function FetchPins(){
           }          
         getPins()
     },[])
+    console.log(pins)
     return(
         <>
-        {pins.map(p=>(
+        {props.pins.map(p=>(
              <Marker key={p._id} longitude={p.long} latitude={p.lat} layer="top" style={{position:'absolute', top:0, left:0}} >
-             <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px'}} />
-          </Marker>
-        //  {/* {showPopup && (
-        //    <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup}></Popups>
-        //  )} */}
+                 <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px'}} />
+                 {showPopup && (
+                     <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup} pin={p}></Popups>
+                 )}
+             </Marker>
         ))}
         </>
     )

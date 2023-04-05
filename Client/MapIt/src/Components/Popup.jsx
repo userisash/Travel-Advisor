@@ -3,12 +3,13 @@ import StarIcon from '@mui/icons-material/Star';
 import React from "react";
 import '../../src/Map.css'
 
-function Popups({longitude, latitude, setShowPopup}){
+function Popups({longitude, latitude, setShowPopup, pin}){
     return(
         <>
         <Popup 
-              longitude={longitude} 
-              latitude={latitude}
+              pin={pin}
+              longitude={pin.long} 
+              latitude={pin.lat}
               anchor="left"
               maxWidth="none"
               className="popup"
