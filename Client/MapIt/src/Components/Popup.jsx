@@ -2,6 +2,7 @@ import  { Popup } from "react-map-gl";
 import StarIcon from '@mui/icons-material/Star';
 import React from "react";
 import '../../src/Map.css'
+import {format} from 'timeago.js'
 
 function Popups({longitude, latitude, setShowPopup, pin}){
     return(
@@ -17,9 +18,9 @@ function Popups({longitude, latitude, setShowPopup, pin}){
               >
                 <div className="card">
               <label>Place</label>
-              <h4>Eiffle Tower</h4>
+              <h4 className="tilte">{pin.title}</h4>
               <label>Review</label>
-              <p>You Should Visit</p>
+              <p>{pin.desc}</p>
               <label>Rating</label>
               <div className="star-container">
                <StarIcon className="star"/> 
@@ -27,8 +28,8 @@ function Popups({longitude, latitude, setShowPopup, pin}){
                 <StarIcon className="star"/>
               </div>
               <label>Information</label><br/>
-              <span className="username">created by<b>Ash</b></span><br/>
-              <span className="date"><b>1 Hour ago</b></span>
+              <span className="username">created by<b>{pin.username}</b></span><br/>
+              <span className="date"><b>{format(pin.createdAt)}</b></span>
               </div>
         </Popup>
         </>

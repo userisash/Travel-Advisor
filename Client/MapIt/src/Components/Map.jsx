@@ -8,6 +8,12 @@ import FetchPins from './FetchPins'
 
 function MapDisplay() {
   const [pins, setPins] = useState([]);
+  // const [currentplaceId, setCurrentPlaceId] = useState(null)
+
+  // const handleMarkerClick = (id) =>{
+  //   console.log("Marker clicked:", id);
+  //   setCurrentPlaceId(id)
+  // }
   useEffect(() => {
     const getPins = async () => {
       try {
