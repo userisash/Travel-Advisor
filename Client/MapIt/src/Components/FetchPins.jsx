@@ -6,14 +6,17 @@ import Popups from './Popup';
 import '../../src/Map.css'
 
 function FetchPins(props){
+    const currentUser = 'Mohammed'
     const [pins, setPins] = useState([])
-    const [showPopup, setShowPopup] = useState(true);
+    const [showPopup, setShowPopup] = useState(false);
     const [currentplaceId, setCurrentPlaceId] = useState(null)
 
    const handleMarkerClick = (id) =>{
       console.log("Marker clicked:", id);
       setCurrentPlaceId(id)
     }
+
+    
      
     useEffect(()=>{
         const getPins = async() => {
@@ -31,10 +34,10 @@ function FetchPins(props){
         <>
         {pins.map(p=>(
              <Marker key={p._id} longitude={p.long} latitude={p.lat} layer="top" style={{position:'absolute', top:0, left:0}} >
-                <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px'}} onClick={()=>props.handleMarkerClick(p._id)} />
+                <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px', color: p.username === currentUser ? "tomato": "blue" }} onClick={()=>setShowPopup(true)} />
                  {console.log("Popup for:", p._id, "Current place:", currentplaceId)}
-                 {p._id === currentplaceId && (
-                     <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup} pin={p}></Popups>
+                 {showPopup && (
+                     <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup} handleMarkerClick={handleMarkerClick} pin={p}></Popups>
                  )}
              </Marker>
         ))}

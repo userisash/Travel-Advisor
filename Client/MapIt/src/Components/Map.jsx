@@ -5,15 +5,13 @@ import RoomIcon from '@mui/icons-material/Room';
 import Popups from './Popup';
 import '../../src/Map.css'
 import FetchPins from './FetchPins'
+import useHandleAddingPins from '../utils/UseAddPins';
+import  { Popup } from "react-map-gl";
 
 function MapDisplay() {
   const [pins, setPins] = useState([]);
-  // const [currentplaceId, setCurrentPlaceId] = useState(null)
+  const { newPlace, setNewPlace, handlePinClick } = useHandleAddingPins();
 
-  // const handleMarkerClick = (id) =>{
-  //   console.log("Marker clicked:", id);
-  //   setCurrentPlaceId(id)
-  // }
   useEffect(() => {
     const getPins = async () => {
       try {
@@ -41,8 +39,21 @@ function MapDisplay() {
       style={{ width: "100vw", height: "100vh", position: "relative" }}
       mapboxAccessToken="pk.eyJ1IjoiYXNocmFmLWFyYWoiLCJhIjoiY2xnM2NuNzFrMDNpeTNkbTJvZXY2c3pqeiJ9.C7iovVKPmBIj4IKUlJ_S_g"
       mapStyle="mapbox://styles/mapbox/streets-v9"
+      onDblClick={handlePinClick}
     >
       <FetchPins pins={pins}></FetchPins>
+      {newPlace && (
+        <Popup 
+          longitude={newPlace.lng} 
+          latitude={newPlace.lat}
+          anchor="left"
+          maxWidth="none"
+          className="popup"
+          onClose={() => setNewPlace(null)}
+        >
+          hello
+        </Popup>
+      )}
     </Map>
   );
 }
