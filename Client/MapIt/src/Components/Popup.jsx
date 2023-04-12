@@ -28,7 +28,8 @@ function Popups({longitude, latitude, setShowPopup, pin}){
                 <StarIcon className="star"/>
               </div>
               <label>Information</label><br/>
-              <span className="username">created by<b>{pin.username}</b></span><br/>
+              <span className="username">created by <b>{pin.username}</b></span><br/>
+
               <span className="date"><b>{format(pin.createdAt)}</b></span>
               </div>
         </Popup>

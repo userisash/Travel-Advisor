@@ -20,3 +20,87 @@ html, body {
   .star{
     color: gold;
   }
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 500px;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+  
+  .card label {
+    font-weight: bold;
+  }
+  
+  .card .title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  
+  .card p {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  
+  .card .star-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .card .star {
+    color: #f8ce0b;
+    font-size: 24px;
+  }
+  
+  .card .username {
+    font-weight: bold;
+  }
+  
+  .card .date {
+    color: #999999;
+  }
+  
+  add-pin.card label {
+    font-weight: bold;
+  }
+  
+  .add-pin.card input,
+  .add-pin.card textarea,
+  .add-pin.card select {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 35px;
+  }
+  
+  .add-pin select {
+    margin-bottom: 24px;
+
+  }
+  
+  .add-pin .submitButton {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 35px;
+  }
+  
+  .add-pin .submitButton:hover {
+    background-color: #388e3c;
+  }

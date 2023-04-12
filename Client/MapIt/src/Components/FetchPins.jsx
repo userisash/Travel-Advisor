@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RoomIcon from '@mui/icons-material/Room';
@@ -34,7 +35,8 @@ function FetchPins(props){
         <>
         {pins.map(p=>(
              <Marker key={p._id} longitude={p.long} latitude={p.lat} layer="top" style={{position:'absolute', top:0, left:0}} >
-                <RoomIcon color='primary' fontSize='large' style={{ width:'20px', height:'20px', color: p.username === currentUser ? "tomato": "blue" }} onClick={()=>setShowPopup(true)} />
+
+                <RoomIcon color='primary' fontSize='large' style={{ width:'40px', height:'40px', color: p.username === currentUser ? "tomato": "blue" }} onClick={()=>setShowPopup(true)} />
                  {console.log("Popup for:", p._id, "Current place:", currentplaceId)}
                  {showPopup && (
                      <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup} handleMarkerClick={handleMarkerClick} pin={p}></Popups>

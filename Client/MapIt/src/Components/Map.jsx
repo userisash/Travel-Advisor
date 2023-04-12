@@ -51,7 +51,32 @@ function MapDisplay() {
           className="popup"
           onClose={() => setNewPlace(null)}
         >
-          hello
+         <div>
+                <form className='add-pin card'>
+                  <label>Title</label>
+                  <input
+                    placeholder="Enter a title"
+                    autoFocus
+                    // onChange={(e) => setTitle(e.target.value)}
+                  />
+                  <label>Description</label>
+                  <textarea
+                    placeholder="Say something about this place."
+                    // onChange={(e) => setDesc(e.target.value)}
+                  />
+                  <label>Rating</label>
+                  <select >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <button type="submit" className="submitButton">
+                    Add Pin
+                  </button>
+                </form>
+              </div>
         </Popup>
       )}
     </Map>
