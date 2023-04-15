@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import RoomIcon from '@mui/icons-material/Room';
@@ -15,10 +14,9 @@ function FetchPins(props){
    const handleMarkerClick = (id) =>{
       console.log("Marker clicked:", id);
       setCurrentPlaceId(id)
+      setShowPopup(true);
     }
 
-    
-     
     useEffect(()=>{
         const getPins = async() => {
             try {
@@ -36,9 +34,9 @@ function FetchPins(props){
         {pins.map(p=>(
              <Marker key={p._id} longitude={p.long} latitude={p.lat} layer="top" style={{position:'absolute', top:0, left:0}} >
 
-                <RoomIcon color='primary' fontSize='large' style={{ width:'40px', height:'40px', color: p.username === currentUser ? "tomato": "blue" }} onClick={()=>setShowPopup(true)} />
+                <RoomIcon color='primary' fontSize='large' style={{ width:'80px', height:'80px', color: p.username === currentUser ? "tomato": "blue" }} onClick={() => handleMarkerClick(p._id)} />
                  {console.log("Popup for:", p._id, "Current place:", currentplaceId)}
-                 {showPopup && (
+                 {showPopup && currentplaceId === p._id && (
                      <Popups longitude={p.long} latitude={p.lat} setShowPopup={setShowPopup} handleMarkerClick={handleMarkerClick} pin={p}></Popups>
                  )}
              </Marker>
