@@ -24,5 +24,4 @@ function useHandleAddingPins() {
     handlePinClick,
   };
 }
-
 export default useHandleAddingPins
