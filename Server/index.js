@@ -8,7 +8,10 @@ const port = process.env.PORT;
 const cors = require('cors')
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:5173',
+    origin: true, credentials: true 
+}))
 app.use("/api/pins/", PinRouter)
 app.use("/api/users/", UserRouter)
 
