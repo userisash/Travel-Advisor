@@ -14,7 +14,7 @@ function Popups({longitude, latitude, setShowPopup, pin}){
               longitude={pin.long} 
               latitude={pin.lat}
               anchor="left"
-              maxWidth="none"
+              maxWidth="200px"
               className="popup"
               onClose={() => setShowPopup(false)}
               >
