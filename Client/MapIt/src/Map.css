@@ -12,9 +12,10 @@ html, body {
     font-size: 14px;
     color: #333;
     width: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: absolute !important;
+    top: 0px;
+    left: 0px;
+    z-index: 12;
   }
   
   .star{

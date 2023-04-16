@@ -71,14 +71,16 @@ function MapDisplay() {
       initialViewState={{
         longitude: -122.4,
         latitude: 37.8,
-        zoom: 4,
+        zoom: -1,
+        maxZoom: 20,
+        minZoom: -1,
       }}
-      style={{ width: "100vw", height: "100vh", position: "relative", zIndex: 0 }}
+      style={{ width: "-webkit-fill-available", height: "100vh", position: "relative", zIndex: 0 }}
       mapboxAccessToken="pk.eyJ1IjoiYXNocmFmLWFyYWoiLCJhIjoiY2xnM2NuNzFrMDNpeTNkbTJvZXY2c3pqeiJ9.C7iovVKPmBIj4IKUlJ_S_g"
       mapStyle="mapbox://styles/mapbox/streets-v9"
       onDblClick={handlePinClick}
     >
-      <FetchPins pins={pins} style={{zIndex: 1}}></FetchPins>
+      <FetchPins pins={pins} style={{zIndex: 10}}></FetchPins>
       {newPlace && (
         <Popup 
           longitude={newPlace.lng} 
