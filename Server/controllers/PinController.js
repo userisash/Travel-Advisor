@@ -4,12 +4,14 @@ const bcrypt = require("bcrypt")
 const CreatePinController = async(req, res) =>{
     const newPin = new Pin(req.body)
     try{
-        const savedPin = await newPin.save()
-        res.status(200).json(savedPin)
+       await newPin.save()
+       return res.status(200).json(newPin)
     }catch(err){
-        res.status(500).json(err)
+        console.log(err.message);
+        res.status(500).json(err.message)
     }
 } 
+
 
 const GetAllPinsController = async(req, res) =>{
     try{
