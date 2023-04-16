@@ -7,6 +7,7 @@ import '../../src/Map.css'
 import FetchPins from './FetchPins'
 import useHandleAddingPins from '../utils/UseAddPins';
 import  { Popup } from "react-map-gl";
+import zIndex from '@mui/material/styles/zIndex';
 
 function MapDisplay() {
   const currentUser = 'mohammed'
@@ -35,16 +36,17 @@ function MapDisplay() {
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
+    console.log(newPlace);
     const newPin ={
       username:currentUser,
       title,
       desc,
-      star,
+      rating: star,
       lat:newPlace.lat,
-      long:newPlace.long
+      long:newPlace.lng
     }
     try{
-      const response = await fetch('http://localhost:8800/api/pins/', {
+      const res = await fetch('http://localhost:8800/api/pins/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +56,10 @@ function MapDisplay() {
         credentials: 'include',
         body: JSON.stringify(newPin)
       });
-      const data = await response.json();
+      const data = await res.json();
+      if (data.message) {
+        console.log(ata.message);
+      }
       setPins([...pins, data]);
       setNewPlace(null);
     } catch(err){
@@ -68,12 +73,12 @@ function MapDisplay() {
         latitude: 37.8,
         zoom: 4,
       }}
-      style={{ width: "100vw", height: "100vh", position: "relative" }}
+      style={{ width: "100vw", height: "100vh", position: "relative", zIndex: 0 }}
       mapboxAccessToken="pk.eyJ1IjoiYXNocmFmLWFyYWoiLCJhIjoiY2xnM2NuNzFrMDNpeTNkbTJvZXY2c3pqeiJ9.C7iovVKPmBIj4IKUlJ_S_g"
       mapStyle="mapbox://styles/mapbox/streets-v9"
       onDblClick={handlePinClick}
     >
-      <FetchPins pins={pins}></FetchPins>
+      <FetchPins pins={pins} style={{zIndex: 1}}></FetchPins>
       {newPlace && (
         <Popup 
           longitude={newPlace.lng} 
