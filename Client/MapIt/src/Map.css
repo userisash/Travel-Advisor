@@ -82,6 +82,12 @@ html, body {
     box-sizing: border-box;
     font-size: 35px;
   }
+  .card .del-btn{
+    width: 150px;
+    height: 50px;
+    color:#fff;
+    background: #333;
+  }
   
   .add-pin select {
     margin-bottom: 24px;
