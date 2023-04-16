@@ -22,8 +22,28 @@ const GetAllPinsController = async(req, res) =>{
     }
 }
 
+const DeletePinsController = async(req, res) =>{
+    try {
+      const { id } = req.params
+  
+      // Check if the pin exists
+      const existingPin = await PinModel.findById(id)
+      if (!existingPin) {
+        return res.status(404).json({ message: 'Pin not found' })
+      }
+  
+      // Delete the pin
+      await PinModel.findByIdAndDelete(id)
+  
+      return res.status(200).json({ message: 'Pin deleted successfully' })
+    } catch (error) {
+      console.error(error)
+      return res.status(500).json({ message: 'Something went wrong' })
+    }
+  }
 
 module.exports = {
     CreatePinController,
-    GetAllPinsController
+    GetAllPinsController,
+    DeletePinsController
 }

@@ -4,6 +4,8 @@ import React from "react";
 import '../../src/Map.css'
 import {format} from 'timeago.js'
 
+
+
 function Popups({longitude, latitude, setShowPopup, pin}){
     return(
         <>
