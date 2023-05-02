@@ -5,12 +5,14 @@ import { Marker } from "react-map-gl";
 import Popups from "./Popup";
 import "../../src/Map.css";
 
-function FetchPins(props) {
-  const currentUser = "Mohammed";
+function FetchPins({currentUserRef}) {
+  const currentUser = 'mohammed';
   const [pins, setPins] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [currentplaceId, setCurrentPlaceId] = useState(null);
   const [pin , setPin]= useState(null)
+  
+
   const handleMarkerClick = (p) => {
     console.log("Marker clicked:", p);
     setPin(p)
@@ -45,11 +47,9 @@ function FetchPins(props) {
           <RoomIcon color='primary' fontSize='large' style={{zIndex:11, width:'80px', height:'80px', color: p.username === currentUser ? "tomato": "blue" }}  />
         </Marker>
       ))}
-{/*       
-                 {console.log("Popup for:", p._id, "Current place:", currentplaceId)} */}
-                 {showPopup === true &&  (
-                     <Popups   setShowPopup={setShowPopup} handleMarkerClick={handleMarkerClick} pin={pin}></Popups>
-                 )}
+      {showPopup === true &&  (
+          <Popups   setShowPopup={setShowPopup} handleMarkerClick={handleMarkerClick} pin={pin}></Popups>
+      )}
     </>
   );
 }

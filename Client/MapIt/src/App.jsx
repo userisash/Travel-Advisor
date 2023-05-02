@@ -4,6 +4,8 @@ import './App.css'
 // import Map from './Components/Map'
 import MapDisplay from './Components/Map'
 import '../src/Map.css';
+import HomePage from './Pages/HomePage';
+import Login from './Components/Login';
 
 function App() {
  

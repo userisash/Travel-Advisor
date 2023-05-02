@@ -10,7 +10,7 @@ import  { Popup } from "react-map-gl";
 import zIndex from '@mui/material/styles/zIndex';
 
 function MapDisplay() {
-  const currentUser = 'mohammed'
+  const [currentUser, setCurrentUser] = useState("mohammed");
   const [pins, setPins] = useState([]);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
@@ -75,7 +75,7 @@ function MapDisplay() {
         maxZoom: 20,
         minZoom: -1,
       }}
-      style={{ width: "-webkit-fill-available", height: "100vh", position: "relative", zIndex: 0 }}
+      style={{ width: "100%", height: "100vh", position: "relative", zIndex: 0 }}
       mapboxAccessToken="pk.eyJ1IjoiYXNocmFmLWFyYWoiLCJhIjoiY2xnM2NuNzFrMDNpeTNkbTJvZXY2c3pqeiJ9.C7iovVKPmBIj4IKUlJ_S_g"
       mapStyle="mapbox://styles/mapbox/streets-v9"
       onDblClick={handlePinClick}
@@ -115,6 +115,9 @@ function MapDisplay() {
                     Add Pin
                   </button>
                 </form>
+                <div className="div">
+                  <p>hey i'm a map</p>
+                </div>
               </div>
         </Popup>
       )}
